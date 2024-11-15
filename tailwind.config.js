@@ -5,8 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        olive: {
+          500: '#009999', // Olive green color
+        },
+        cyan: {
+          500: '#00ffff', // Bright cyan color
+        },
+      },
+    },
   },
   plugins: [],
 }
-

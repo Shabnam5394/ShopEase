@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 function HeroSection() {
+  // Array of image sources
+  const images = [
+    '/image/Group 1.jpg',
+    '/image/4 (2).jpg',
+    '/image/img11.png',
+    
+  ];
+
+  // State to track the current image index
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Use useEffect to automatically slide images every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 1000); // Change image every 3 seconds
+
+    // Cleanup the interval when component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div>
-         <img src="https://static.vecteezy.com/system/resources/previews/004/299/835/original/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-free-vector.jpg" alt="" />
+    <div className="hero-section">
+      <div className="image-slider">
+        <img src={images[currentImageIndex]} alt="Hero" />
+      </div>
     </div>
-  )
+  );
 }
 
-export default HeroSection
+export default HeroSection;
